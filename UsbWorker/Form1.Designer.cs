@@ -29,28 +29,27 @@ namespace UsbWorker
         /// </summary>
         private void InitializeComponent()
         {
+            this.serialPort1 = new System.IO.Ports.SerialPort();
+
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmbPort = new System.Windows.Forms.ComboBox();
-            this.cmbBaud = new System.Windows.Forms.ComboBox();
-            this.cmbData = new System.Windows.Forms.ComboBox();
-            this.cmbStop = new System.Windows.Forms.ComboBox();
-            this.cmbParity = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbParity = new System.Windows.Forms.ComboBox();
+            this.cmbStop = new System.Windows.Forms.ComboBox();
+            this.cmbData = new System.Windows.Forms.ComboBox();
+            this.cmbBaud = new System.Windows.Forms.ComboBox();
+            this.cmbPort = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnOpen = new System.Windows.Forms.Button();
+            this.lbStatus = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.btnOpen = new System.Windows.Forms.Button();
             this.btnSend = new System.Windows.Forms.Button();
             this.tbDataOut = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-
             this.SuspendLayout();
             // 
             // groupBox1
@@ -72,72 +71,14 @@ namespace UsbWorker
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Port controls";
             // 
-            // cmbPort
+            // label5
             // 
-            this.cmbPort.FormattingEnabled = true;
-            this.cmbPort.Location = new System.Drawing.Point(103, 22);
-            this.cmbPort.Name = "cmbPort";
-            this.cmbPort.Size = new System.Drawing.Size(121, 23);
-            this.cmbPort.TabIndex = 0;
-            // 
-            // cmbBaud
-            // 
-            this.cmbBaud.FormattingEnabled = true;
-            this.cmbBaud.Location = new System.Drawing.Point(103, 51);
-            this.cmbBaud.Name = "cmbBaud";
-            this.cmbBaud.Size = new System.Drawing.Size(121, 23);
-            this.cmbBaud.TabIndex = 1;
-            // 
-            // cmbData
-            // 
-            this.cmbData.FormattingEnabled = true;
-            this.cmbData.Location = new System.Drawing.Point(103, 80);
-            this.cmbData.Name = "cmbData";
-            this.cmbData.Size = new System.Drawing.Size(121, 23);
-            this.cmbData.TabIndex = 2;
-            // 
-            // cmbStop
-            // 
-            this.cmbStop.FormattingEnabled = true;
-            this.cmbStop.Location = new System.Drawing.Point(103, 109);
-            this.cmbStop.Name = "cmbStop";
-            this.cmbStop.Size = new System.Drawing.Size(121, 23);
-            this.cmbStop.TabIndex = 3;
-            // 
-            // cmbParity
-            // 
-            this.cmbParity.FormattingEnabled = true;
-            this.cmbParity.Location = new System.Drawing.Point(103, 138);
-            this.cmbParity.Name = "cmbParity";
-            this.cmbParity.Size = new System.Drawing.Size(121, 23);
-            this.cmbParity.TabIndex = 4;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 15);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "COMP PORT";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 54);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 15);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "BAUD RATE";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 83);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 15);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "DATA BITS";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(17, 141);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 15);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "PARITY BITS";
             // 
             // label4
             // 
@@ -148,18 +89,95 @@ namespace UsbWorker
             this.label4.TabIndex = 8;
             this.label4.Text = "STOP BITS";
             // 
-            // label5
+            // label3
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(17, 141);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 15);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "PARITY BITS";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(17, 83);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 15);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "DATA BITS";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(17, 54);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 15);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "BAUD RATE";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 15);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "COMP PORT";
+            // 
+            // cmbParity
+            // 
+            this.cmbParity.FormattingEnabled = true;
+            this.cmbParity.Items.AddRange(new object[] {
+            "None",
+            "Odd",
+            "Even"});
+            this.cmbParity.Location = new System.Drawing.Point(103, 138);
+            this.cmbParity.Name = "cmbParity";
+            this.cmbParity.Size = new System.Drawing.Size(121, 23);
+            this.cmbParity.TabIndex = 4;
+            this.cmbParity.Text = "None";
+            // 
+            // cmbStop
+            // 
+            this.cmbStop.FormattingEnabled = true;
+            this.cmbStop.Items.AddRange(new object[] {
+            "One",
+            "Two"});
+            this.cmbStop.Location = new System.Drawing.Point(103, 109);
+            this.cmbStop.Name = "cmbStop";
+            this.cmbStop.Size = new System.Drawing.Size(121, 23);
+            this.cmbStop.TabIndex = 3;
+            this.cmbStop.Text = "One";
+            // 
+            // cmbData
+            // 
+            this.cmbData.FormattingEnabled = true;
+            this.cmbData.Items.AddRange(new object[] {
+            "6",
+            "7",
+            "8"});
+            this.cmbData.Location = new System.Drawing.Point(103, 80);
+            this.cmbData.Name = "cmbData";
+            this.cmbData.Size = new System.Drawing.Size(121, 23);
+            this.cmbData.TabIndex = 2;
+            this.cmbData.Text = "8";
+            // 
+            // cmbBaud
+            // 
+            this.cmbBaud.FormattingEnabled = true;
+            this.cmbBaud.Items.AddRange(new object[] {
+            "2400",
+            "4800",
+            "9600"});
+            this.cmbBaud.Location = new System.Drawing.Point(103, 51);
+            this.cmbBaud.Name = "cmbBaud";
+            this.cmbBaud.Size = new System.Drawing.Size(121, 23);
+            this.cmbBaud.TabIndex = 1;
+            this.cmbBaud.Text = "9600";
+            // 
+            // cmbPort
+            // 
+            this.cmbPort.FormattingEnabled = true;
+            this.cmbPort.Location = new System.Drawing.Point(103, 22);
+            this.cmbPort.Name = "cmbPort";
+            this.cmbPort.Size = new System.Drawing.Size(121, 23);
+            this.cmbPort.TabIndex = 0;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.progressBar1);
+            this.groupBox2.Controls.Add(this.lbStatus);
             this.groupBox2.Controls.Add(this.btnClose);
             this.groupBox2.Controls.Add(this.btnOpen);
             this.groupBox2.Location = new System.Drawing.Point(12, 196);
@@ -167,6 +185,26 @@ namespace UsbWorker
             this.groupBox2.Size = new System.Drawing.Size(176, 85);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            // 
+            // lbStatus
+            // 
+            this.lbStatus.ForeColor = System.Drawing.Color.White;
+            this.lbStatus.Location = new System.Drawing.Point(19, 56);
+            this.lbStatus.Name = "lbStatus";
+            this.lbStatus.Size = new System.Drawing.Size(141, 15);
+            this.lbStatus.TabIndex = 10;
+            this.lbStatus.Text = "STATUS";
+            this.lbStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(98, 22);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(62, 23);
+            this.btnClose.TabIndex = 1;
+            this.btnClose.Text = "CLOSE";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnOpen
             // 
@@ -176,22 +214,7 @@ namespace UsbWorker
             this.btnOpen.TabIndex = 0;
             this.btnOpen.Text = "OPEN";
             this.btnOpen.UseVisualStyleBackColor = true;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(98, 23);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(62, 23);
-            this.btnClose.TabIndex = 1;
-            this.btnClose.Text = "CLOSE";
-            this.btnClose.UseVisualStyleBackColor = true;
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(16, 52);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(144, 18);
-            this.progressBar1.TabIndex = 2;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // btnSend
             // 
@@ -201,6 +224,7 @@ namespace UsbWorker
             this.btnSend.TabIndex = 3;
             this.btnSend.Text = "Send Data";
             this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // tbDataOut
             // 
@@ -221,6 +245,7 @@ namespace UsbWorker
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "USB_worker";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -245,11 +270,11 @@ namespace UsbWorker
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.TextBox tbDataOut;
+        private System.Windows.Forms.Label lbStatus;
     }
 }
 
