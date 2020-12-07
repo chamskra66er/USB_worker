@@ -1,0 +1,15 @@
+C:\VS\С#\UsbWorker\UsbWorker\bin\Debug\netcoreapp3.1\UsbWorker.exe
+C:\VS\С#\UsbWorker\UsbWorker\bin\Debug\netcoreapp3.1\UsbWorker.deps.json
+C:\VS\С#\UsbWorker\UsbWorker\bin\Debug\netcoreapp3.1\UsbWorker.runtimeconfig.json
+C:\VS\С#\UsbWorker\UsbWorker\bin\Debug\netcoreapp3.1\UsbWorker.runtimeconfig.dev.json
+C:\VS\С#\UsbWorker\UsbWorker\bin\Debug\netcoreapp3.1\UsbWorker.dll
+C:\VS\С#\UsbWorker\UsbWorker\bin\Debug\netcoreapp3.1\UsbWorker.pdb
+C:\VS\С#\UsbWorker\UsbWorker\obj\Debug\netcoreapp3.1\UsbWorker.csprojAssemblyReference.cache
+C:\VS\С#\UsbWorker\UsbWorker\obj\Debug\netcoreapp3.1\UsbWorker.Form1.resources
+C:\VS\С#\UsbWorker\UsbWorker\obj\Debug\netcoreapp3.1\UsbWorker.csproj.GenerateResource.cache
+C:\VS\С#\UsbWorker\UsbWorker\obj\Debug\netcoreapp3.1\UsbWorker.AssemblyInfoInputs.cache
+C:\VS\С#\UsbWorker\UsbWorker\obj\Debug\netcoreapp3.1\UsbWorker.AssemblyInfo.cs
+C:\VS\С#\UsbWorker\UsbWorker\obj\Debug\netcoreapp3.1\UsbWorker.csproj.CoreCompileInputs.cache
+C:\VS\С#\UsbWorker\UsbWorker\obj\Debug\netcoreapp3.1\UsbWorker.dll
+C:\VS\С#\UsbWorker\UsbWorker\obj\Debug\netcoreapp3.1\UsbWorker.pdb
+C:\VS\С#\UsbWorker\UsbWorker\obj\Debug\netcoreapp3.1\UsbWorker.genruntimeconfig.cache
