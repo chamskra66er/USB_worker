@@ -13,6 +13,8 @@ namespace UsbWorker
 {
     public partial class Form1 : Form
     {
+        private SerialPort serialPort1;
+
         private string OutputData;
         private List<string> ports = new List<string>();
 
@@ -21,7 +23,11 @@ namespace UsbWorker
         {
             InitializeComponent();
 
+            serialPort1 = new SerialPort();
+            serialPort1.DataReceived += new SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+
             ports.AddRange(SerialPort.GetPortNames());
+
             lbStatus.Text = "Disconnect...";
             lbStatus.BackColor = Color.Red;
             btnClose.Enabled = false;
@@ -93,7 +99,41 @@ namespace UsbWorker
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
+            DataIn = serialPort1.ReadExisting();
+            this.Invoke(new EventHandler(ShowData));
+        }
 
+        private void ShowData(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                tbDataIn.Text = DataIn;
+            }
+            else if (checkBox2.Checked)
+            {
+                tbDataIn.Text += DataIn;
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                checkBox2.Checked = false;
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                checkBox1.Checked = false;
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            tbDataIn.Text = string.Empty;
         }
     }
 }

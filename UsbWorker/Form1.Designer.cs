@@ -1,6 +1,4 @@
 ﻿
-using System.IO.Ports;
-
 namespace UsbWorker
 {
     partial class Form1
@@ -49,23 +47,18 @@ namespace UsbWorker
             this.btnSend = new System.Windows.Forms.Button();
             this.tbDataOut = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.btnClear = new System.Windows.Forms.Button();
             this.tbDataIn = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
-            //
-            // serialPort1
-            //
-            this.serialPort1.DataReceived += new SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
-
             // 
             // groupBox1
             // 
@@ -262,6 +255,48 @@ namespace UsbWorker
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Receiver Control";
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.checkBox2);
+            this.groupBox5.Controls.Add(this.checkBox1);
+            this.groupBox5.Location = new System.Drawing.Point(78, 194);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(136, 58);
+            this.groupBox5.TabIndex = 10;
+            this.groupBox5.TabStop = false;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(13, 35);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(114, 19);
+            this.checkBox2.TabIndex = 9;
+            this.checkBox2.Text = "Add To Old Data";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(13, 13);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(104, 19);
+            this.checkBox1.TabIndex = 8;
+            this.checkBox1.Text = "Always Update";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(14, 201);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(62, 53);
+            this.btnClear.TabIndex = 7;
+            this.btnClear.Text = "Clear Data IN";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // tbDataIn
             // 
             this.tbDataIn.Location = new System.Drawing.Point(7, 23);
@@ -279,45 +314,6 @@ namespace UsbWorker
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Transmitter Control";
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(14, 201);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(62, 53);
-            this.btnClear.TabIndex = 7;
-            this.btnClear.Text = "Clear Data IN";
-            this.btnClear.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(13, 13);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(104, 19);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "Always Update";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(13, 35);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(114, 19);
-            this.checkBox2.TabIndex = 9;
-            this.checkBox2.Text = "Add To Old Data";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.checkBox2);
-            this.groupBox5.Controls.Add(this.checkBox1);
-            this.groupBox5.Location = new System.Drawing.Point(78, 194);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(136, 58);
-            this.groupBox5.TabIndex = 10;
-            this.groupBox5.TabStop = false;
             // 
             // Form1
             // 
@@ -337,17 +333,15 @@ namespace UsbWorker
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
-        #endregion
-
-        private System.IO.Ports.SerialPort serialPort1;
+        #endregion       
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmbParity;

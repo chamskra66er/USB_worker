@@ -15,7 +15,6 @@ C:\VS\С#\UsbWorker\UsbWorker\obj\Debug\net5.0-windows\UsbWorker.dll
 C:\VS\С#\UsbWorker\UsbWorker\obj\Debug\net5.0-windows\ref\UsbWorker.dll
 C:\VS\С#\UsbWorker\UsbWorker\obj\Debug\net5.0-windows\UsbWorker.pdb
 C:\VS\С#\UsbWorker\UsbWorker\obj\Debug\net5.0-windows\UsbWorker.genruntimeconfig.cache
-C:\VS\С#\UsbWorker\UsbWorker\obj\Debug\net5.0-windows\UsbWorker.csprojAssemblyReference.cache
 C:\VS\С#\UsbWorker\UsbWorker\bin\Debug\net5.0-windows\System.IO.Ports.dll
 C:\VS\С#\UsbWorker\UsbWorker\bin\Debug\net5.0-windows\runtimes\linux-arm\native\libSystem.IO.Ports.Native.so
 C:\VS\С#\UsbWorker\UsbWorker\bin\Debug\net5.0-windows\runtimes\linux-arm64\native\libSystem.IO.Ports.Native.so
