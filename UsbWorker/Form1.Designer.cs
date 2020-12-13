@@ -41,23 +41,22 @@ namespace UsbWorker
             this.cmbBaud = new System.Windows.Forms.ComboBox();
             this.cmbPort = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.lbStatus = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnSend = new System.Windows.Forms.Button();
             this.tbDataOut = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.btnClear = new System.Windows.Forms.Button();
             this.tbDataIn = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.cmbSaveAs = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -185,14 +184,49 @@ namespace UsbWorker
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmbSaveAs);
+            this.groupBox2.Controls.Add(this.groupBox5);
             this.groupBox2.Controls.Add(this.lbStatus);
+            this.groupBox2.Controls.Add(this.btnClear);
             this.groupBox2.Controls.Add(this.btnClose);
             this.groupBox2.Controls.Add(this.btnOpen);
             this.groupBox2.Location = new System.Drawing.Point(12, 196);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(176, 85);
+            this.groupBox2.Size = new System.Drawing.Size(601, 88);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.checkBox2);
+            this.groupBox5.Controls.Add(this.checkBox1);
+            this.groupBox5.Location = new System.Drawing.Point(330, 12);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(261, 35);
+            this.groupBox5.TabIndex = 10;
+            this.groupBox5.TabStop = false;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(123, 14);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(114, 19);
+            this.checkBox2.TabIndex = 9;
+            this.checkBox2.Text = "Add To Old Data";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(13, 14);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(104, 19);
+            this.checkBox1.TabIndex = 8;
+            this.checkBox1.Text = "Always Update";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // lbStatus
             // 
@@ -203,6 +237,16 @@ namespace UsbWorker
             this.lbStatus.TabIndex = 10;
             this.lbStatus.Text = "STATUS";
             this.lbStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(220, 23);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(92, 22);
+            this.btnClear.TabIndex = 7;
+            this.btnClear.Text = "Clear Data IN";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnClose
             // 
@@ -226,103 +270,62 @@ namespace UsbWorker
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(194, 205);
+            this.btnSend.Location = new System.Drawing.Point(274, 22);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(62, 76);
+            this.btnSend.Size = new System.Drawing.Size(62, 23);
             this.btnSend.TabIndex = 3;
-            this.btnSend.Text = "Send Data";
+            this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // tbDataOut
             // 
-            this.tbDataOut.Location = new System.Drawing.Point(6, 22);
+            this.tbDataOut.Location = new System.Drawing.Point(10, 22);
             this.tbDataOut.Multiline = true;
             this.tbDataOut.Name = "tbDataOut";
-            this.tbDataOut.Size = new System.Drawing.Size(188, 158);
+            this.tbDataOut.Size = new System.Drawing.Size(251, 23);
             this.tbDataOut.TabIndex = 4;
             this.tbDataOut.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbDataOut_KeyDown);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.groupBox5);
-            this.groupBox3.Controls.Add(this.btnClear);
-            this.groupBox3.Controls.Add(this.tbDataIn);
-            this.groupBox3.Location = new System.Drawing.Point(479, 9);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(226, 269);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Receiver Control";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.checkBox2);
-            this.groupBox5.Controls.Add(this.checkBox1);
-            this.groupBox5.Location = new System.Drawing.Point(78, 194);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(136, 58);
-            this.groupBox5.TabIndex = 10;
-            this.groupBox5.TabStop = false;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(13, 35);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(114, 19);
-            this.checkBox2.TabIndex = 9;
-            this.checkBox2.Text = "Add To Old Data";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(13, 13);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(104, 19);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "Always Update";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(14, 201);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(62, 53);
-            this.btnClear.TabIndex = 7;
-            this.btnClear.Text = "Clear Data IN";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
             // tbDataIn
             // 
-            this.tbDataIn.Location = new System.Drawing.Point(7, 23);
+            this.tbDataIn.Location = new System.Drawing.Point(10, 51);
             this.tbDataIn.Multiline = true;
             this.tbDataIn.Name = "tbDataIn";
-            this.tbDataIn.Size = new System.Drawing.Size(209, 158);
+            this.tbDataIn.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tbDataIn.Size = new System.Drawing.Size(326, 110);
             this.tbDataIn.TabIndex = 6;
             // 
-            // groupBox4
+            // groupBox6
             // 
-            this.groupBox4.Controls.Add(this.tbDataOut);
-            this.groupBox4.Location = new System.Drawing.Point(267, 10);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(200, 268);
-            this.groupBox4.TabIndex = 6;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Transmitter Control";
+            this.groupBox6.Controls.Add(this.tbDataOut);
+            this.groupBox6.Controls.Add(this.btnSend);
+            this.groupBox6.Controls.Add(this.tbDataIn);
+            this.groupBox6.Location = new System.Drawing.Point(267, 10);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(346, 180);
+            this.groupBox6.TabIndex = 7;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "MONITOR";
+            // 
+            // cmbSaveAs
+            // 
+            this.cmbSaveAs.FormattingEnabled = true;
+            this.cmbSaveAs.Items.AddRange(new object[] {
+            "Сохранить как .txt"});
+            this.cmbSaveAs.Location = new System.Drawing.Point(453, 56);
+            this.cmbSaveAs.Name = "cmbSaveAs";
+            this.cmbSaveAs.Size = new System.Drawing.Size(138, 23);
+            this.cmbSaveAs.TabIndex = 11;
+            this.cmbSaveAs.Text = "Сохранить ...";
+            this.cmbSaveAs.SelectedIndexChanged += new System.EventHandler(this.cmbSaveAs_SelectedIndexChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(717, 298);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.btnSend);
+            this.ClientSize = new System.Drawing.Size(625, 305);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -331,12 +334,10 @@ namespace UsbWorker
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -360,13 +361,13 @@ namespace UsbWorker
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.TextBox tbDataOut;
         private System.Windows.Forms.Label lbStatus;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox tbDataIn;
-        private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.ComboBox cmbSaveAs;
     }
 }
 

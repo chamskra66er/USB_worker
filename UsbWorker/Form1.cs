@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
+using System.IO;
 
 namespace UsbWorker
 {
@@ -134,6 +135,41 @@ namespace UsbWorker
         private void btnClear_Click(object sender, EventArgs e)
         {
             tbDataIn.Text = string.Empty;
+        }
+
+        private void cmbSaveAs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tbDataIn.Text==string.Empty)
+            {
+                return;
+            }
+
+            var send = sender as ComboBox;
+            switch (send.SelectedIndex)
+            {
+                case 0:
+                    this.Invoke(new EventHandler(SaveAsTxt));
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void SaveAsTxt(object sender, EventArgs e)
+        {
+            try
+            {
+                using (StreamWriter writer = new StreamWriter("Data.txt", true))
+                {
+                    writer.Write(tbDataIn.Text);
+                }
+                MessageBox.Show("Data was saved", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (IOException ex)
+            {
+
+                MessageBox.Show("File was not saved", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
