@@ -15,13 +15,16 @@ namespace UsbWorker
     {
         private string OutputData;
         private List<string> ports = new List<string>();
+
+        private string DataIn;
         public Form1()
         {
             InitializeComponent();
 
             ports.AddRange(SerialPort.GetPortNames());
-            lbStatus.Text = "Disconnect";
+            lbStatus.Text = "Disconnect...";
             lbStatus.BackColor = Color.Red;
+            btnClose.Enabled = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -41,8 +44,11 @@ namespace UsbWorker
 
                 serialPort1.Open();
 
-                lbStatus.Text = "Connect";
+                lbStatus.Text = "Connect...";
                 lbStatus.BackColor = Color.Green;
+
+                btnOpen.Enabled = false;
+                btnClose.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -56,8 +62,10 @@ namespace UsbWorker
             {
                 serialPort1.Close();
             }
-            lbStatus.Text = "Disconnect";
+            lbStatus.Text = "Disconnect...";
             lbStatus.BackColor = Color.Red;
+
+            btnOpen.Enabled = true;
         }
 
         private void btnSend_Click(object sender, EventArgs e)
@@ -67,6 +75,25 @@ namespace UsbWorker
                 OutputData = tbDataOut.Text;
                 serialPort1.WriteLine(OutputData);
             }
+        }
+
+        private void tbDataOut_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (serialPort1.IsOpen)
+                {
+                    OutputData = tbDataOut.Text;
+                    serialPort1.WriteLine(OutputData);
+                }
+                else return;
+            }
+            else return;
+        }
+
+        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+
         }
     }
 }
