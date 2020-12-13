@@ -24,3 +24,4 @@ C:\VS\С#\UsbWorker\UsbWorker\bin\Debug\net5.0-windows\runtimes\linux\lib\netsta
 C:\VS\С#\UsbWorker\UsbWorker\bin\Debug\net5.0-windows\runtimes\osx\lib\netstandard2.0\System.IO.Ports.dll
 C:\VS\С#\UsbWorker\UsbWorker\bin\Debug\net5.0-windows\runtimes\win\lib\netstandard2.0\System.IO.Ports.dll
 C:\VS\С#\UsbWorker\UsbWorker\obj\Debug\net5.0-windows\UsbWorker.csproj.CopyComplete
+C:\VS\С#\UsbWorker\UsbWorker\obj\Debug\net5.0-windows\UsbWorker.csprojAssemblyReference.cache
