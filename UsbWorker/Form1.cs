@@ -15,6 +15,8 @@ namespace UsbWorker
     public partial class Form1 : Form
     {
         private SerialPort serialPort1;
+        private List<string> dataFormat = new List<string>{"Hex","Decimal","Binary","Char"};
+        private string selectDataFormat = "Char";
 
         private string OutputData;
         private List<string> ports = new List<string>();
@@ -32,6 +34,8 @@ namespace UsbWorker
             lbStatus.Text = "Disconnect...";
             lbStatus.BackColor = Color.Red;
             btnClose.Enabled = false;
+
+            cmbDataFormat.Items.AddRange(dataFormat.ToArray());
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -100,7 +104,19 @@ namespace UsbWorker
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            DataIn = serialPort1.ReadExisting();
+            //DataIn = serialPort1.ReadExisting();
+            List<int> dataBuffer = new List<int>();
+            while (serialPort1.BytesToRead>0)
+            {
+                try
+                {
+                    dataBuffer.Add(serialPort1.ReadByte());
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message);
+                }
+            }
             this.Invoke(new EventHandler(ShowData));
         }
 
@@ -170,6 +186,43 @@ namespace UsbWorker
 
                 MessageBox.Show("File was not saved", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void cmbDataFormat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string outString = "";
+            //"Hex","Decimal","Binary","Char"
+            var selectedData = sender as ComboBox;
+            switch (selectedData.SelectedIndex)
+            {
+                case 0:
+                    foreach (var item in DataIn)
+                    {
+                        outString += Convert.ToString(item, 16) + "\t";
+                    }
+                    break;
+                case 1:
+                    foreach (var item in DataIn)
+                    {
+                        outString += Convert.ToString(item) + "\t";
+                    }
+                    break;
+                case 2:
+                    foreach (var item in DataIn)
+                    {
+                        outString += Convert.ToString(item,2) + "\t";
+                    }
+                    break;
+                case 3:
+                    foreach (var item in DataIn)
+                    {
+                        outString += Convert.ToChar(item) + "\t";
+                    }
+                    break;
+                default:
+                    break;
+            }
+            tbDataIn.Text = outString;
         }
     }
 }

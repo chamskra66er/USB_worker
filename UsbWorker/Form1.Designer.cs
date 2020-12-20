@@ -41,6 +41,8 @@ namespace UsbWorker
             this.cmbBaud = new System.Windows.Forms.ComboBox();
             this.cmbPort = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbDataFormat = new System.Windows.Forms.ComboBox();
+            this.cmbSaveAs = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -52,7 +54,6 @@ namespace UsbWorker
             this.tbDataOut = new System.Windows.Forms.TextBox();
             this.tbDataIn = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.cmbSaveAs = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -184,6 +185,7 @@ namespace UsbWorker
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmbDataFormat);
             this.groupBox2.Controls.Add(this.cmbSaveAs);
             this.groupBox2.Controls.Add(this.groupBox5);
             this.groupBox2.Controls.Add(this.lbStatus);
@@ -195,6 +197,28 @@ namespace UsbWorker
             this.groupBox2.Size = new System.Drawing.Size(601, 88);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            // 
+            // cmbDataFormat
+            // 
+            this.cmbDataFormat.FormattingEnabled = true;
+            this.cmbDataFormat.Location = new System.Drawing.Point(291, 56);
+            this.cmbDataFormat.Name = "cmbDataFormat";
+            this.cmbDataFormat.Size = new System.Drawing.Size(138, 23);
+            this.cmbDataFormat.TabIndex = 12;
+            this.cmbDataFormat.Text = "Data Format";
+            this.cmbDataFormat.SelectedIndexChanged += new System.EventHandler(this.cmbDataFormat_SelectedIndexChanged);
+            // 
+            // cmbSaveAs
+            // 
+            this.cmbSaveAs.FormattingEnabled = true;
+            this.cmbSaveAs.Items.AddRange(new object[] {
+            "Сохранить как .txt"});
+            this.cmbSaveAs.Location = new System.Drawing.Point(453, 56);
+            this.cmbSaveAs.Name = "cmbSaveAs";
+            this.cmbSaveAs.Size = new System.Drawing.Size(138, 23);
+            this.cmbSaveAs.TabIndex = 11;
+            this.cmbSaveAs.Text = "Сохранить ...";
+            this.cmbSaveAs.SelectedIndexChanged += new System.EventHandler(this.cmbSaveAs_SelectedIndexChanged);
             // 
             // groupBox5
             // 
@@ -308,18 +332,6 @@ namespace UsbWorker
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "MONITOR";
             // 
-            // cmbSaveAs
-            // 
-            this.cmbSaveAs.FormattingEnabled = true;
-            this.cmbSaveAs.Items.AddRange(new object[] {
-            "Сохранить как .txt"});
-            this.cmbSaveAs.Location = new System.Drawing.Point(453, 56);
-            this.cmbSaveAs.Name = "cmbSaveAs";
-            this.cmbSaveAs.Size = new System.Drawing.Size(138, 23);
-            this.cmbSaveAs.TabIndex = 11;
-            this.cmbSaveAs.Text = "Сохранить ...";
-            this.cmbSaveAs.SelectedIndexChanged += new System.EventHandler(this.cmbSaveAs_SelectedIndexChanged);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -368,6 +380,7 @@ namespace UsbWorker
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.ComboBox cmbSaveAs;
+        private System.Windows.Forms.ComboBox cmbDataFormat;
     }
 }
 
