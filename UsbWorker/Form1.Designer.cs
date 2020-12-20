@@ -206,7 +206,6 @@ namespace UsbWorker
             this.cmbDataFormat.Size = new System.Drawing.Size(138, 23);
             this.cmbDataFormat.TabIndex = 12;
             this.cmbDataFormat.Text = "Data Format";
-            this.cmbDataFormat.SelectedIndexChanged += new System.EventHandler(this.cmbDataFormat_SelectedIndexChanged);
             // 
             // cmbSaveAs
             // 

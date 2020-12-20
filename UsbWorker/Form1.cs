@@ -17,6 +17,7 @@ namespace UsbWorker
         private SerialPort serialPort1;
         private List<string> dataFormat = new List<string>{"Hex","Decimal","Binary","Char"};
         private string selectDataFormat = "Char";
+        private int[] dataInDec;
 
         private string OutputData;
         private List<string> ports = new List<string>();
@@ -117,11 +118,16 @@ namespace UsbWorker
                     MessageBox.Show(error.Message);
                 }
             }
+            dataInDec = new int[dataBuffer.Count()];
+            dataInDec = dataBuffer.ToArray();
+
             this.Invoke(new EventHandler(ShowData));
         }
 
         private void ShowData(object sender, EventArgs e)
         {
+            DataIn = RX_Data(dataInDec);
+            
             if (checkBox1.Checked)
             {
                 tbDataIn.Text = DataIn;
@@ -187,34 +193,34 @@ namespace UsbWorker
                 MessageBox.Show("File was not saved", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-        private void cmbDataFormat_SelectedIndexChanged(object sender, EventArgs e)
+        
+        private string RX_Data(int[] dataIn)
         {
             string outString = "";
             //"Hex","Decimal","Binary","Char"
-            var selectedData = sender as ComboBox;
-            switch (selectedData.SelectedIndex)
+            var selectedData = cmbDataFormat.SelectedIndex;
+            switch (selectedData)
             {
                 case 0:
-                    foreach (var item in DataIn)
+                    foreach (var item in dataIn)
                     {
                         outString += Convert.ToString(item, 16) + "\t";
                     }
                     break;
                 case 1:
-                    foreach (var item in DataIn)
+                    foreach (var item in dataIn)
                     {
                         outString += Convert.ToString(item) + "\t";
                     }
                     break;
                 case 2:
-                    foreach (var item in DataIn)
+                    foreach (var item in dataIn)
                     {
-                        outString += Convert.ToString(item,2) + "\t";
+                        outString += Convert.ToString(item, 2) + "\t";
                     }
                     break;
                 case 3:
-                    foreach (var item in DataIn)
+                    foreach (var item in dataIn)
                     {
                         outString += Convert.ToChar(item) + "\t";
                     }
@@ -222,7 +228,7 @@ namespace UsbWorker
                 default:
                     break;
             }
-            tbDataIn.Text = outString;
+            return outString;
         }
     }
 }
