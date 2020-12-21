@@ -44,6 +44,9 @@ namespace UsbWorker
         private void Form1_Load(object sender, EventArgs e)
         {
             cmbPort.Items.AddRange(ports.ToArray());
+
+            this.cmbTransmitteDataFormat.SelectionChangeCommitted += 
+                new EventHandler(this.cmbTransmitteDataFormat_SelectionChangeCommitted);
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -86,8 +89,9 @@ namespace UsbWorker
         {
             if (serialPort1.IsOpen)
             {
-                OutputData = tbDataOut.Text;
-                serialPort1.WriteLine(OutputData);
+                //OutputData = tbDataOut.Text;
+                //serialPort1.WriteLine(OutputData);
+                RX_Data_Send();
             }
         }
 
@@ -241,6 +245,121 @@ namespace UsbWorker
         private void cmbTransmitteDataFormat_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedDataTransmitte = cmbTransmitteDataFormat.SelectedIndex;
+        }
+
+        private void tbDataOut_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+
+            switch (selectedDataTransmitte)
+            {
+                case 0:
+                    char upper = char.ToUpper(c);
+                    if (!char.IsDigit(upper) && upper!=8 && upper!=46 && upper!=','
+                        && !(upper>=65 && upper<=70))
+                    {
+                        e.Handled = true;
+                    }
+                    break;
+                case 1:
+                    if (!char.IsDigit(c) && c != 8 && c != 46 && c != ',')
+                    {
+                        e.Handled = true;
+                    }
+                    break;
+                case 2:
+                    if (c != 49 && c != 48 && c != 8 && c != 46 && c != ',')
+                    {
+                        e.Handled = true;
+                    }
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void cmbTransmitteDataFormat_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            tbDataOut.Clear();
+        }
+        private void RX_Data_Send()
+        {
+            if(selectedDataTransmitte ==3)
+            {
+                serialPort1.Write(tbDataOut.Text);
+            }
+            else
+            {
+                try
+                {
+                    string dataOutBuffer;
+                    int countComma = 0;
+                    string[] dataPrepareToSend;
+                    byte[] dataToSend;
+
+                    dataOutBuffer = tbDataOut.Text;
+                    foreach (var c in dataOutBuffer)
+                    {
+                        if (c == ',')
+                        {
+                            countComma++;
+                        }
+                    }
+                    dataPrepareToSend = new string[countComma];
+                    countComma = 0;
+                    foreach (var c in dataOutBuffer)
+                    {
+                        if (c != ',')
+                        {
+                            dataPrepareToSend[countComma] += c;
+                        }
+                        else
+                        {
+                            countComma++;
+
+                            if (countComma == dataPrepareToSend.GetLength(0))
+                            {
+                                break;
+                            }
+                        }
+                    }
+
+                    dataToSend = new byte[dataPrepareToSend.Length];
+
+                    //"Hex","Decimal","Binary","Char"
+                    switch (selectedDataTransmitte)
+                    {
+                        case 0://hex
+                            for (int i = 0; i < dataToSend.Length; i++)
+                            {
+                                dataToSend[i] = Convert.ToByte(dataPrepareToSend[i], 16);
+                            }
+                            serialPort1.Write(dataToSend, 0, dataToSend.Length);
+                            break;
+                        case 1://decimal
+                            for (int i = 0; i < dataToSend.Length; i++)
+                            {
+                                dataToSend[i] = Convert.ToByte(dataPrepareToSend[i], 10);
+                            }
+                            serialPort1.Write(dataToSend, 0, dataToSend.Length);
+                            break;
+                        case 2://binary
+                            for (int i = 0; i < dataToSend.Length; i++)
+                            {
+                                dataToSend[i] = Convert.ToByte(dataPrepareToSend[i], 2);
+                            }
+                            serialPort1.Write(dataToSend, 0, dataToSend.Length);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+            }
         }
     }
 }

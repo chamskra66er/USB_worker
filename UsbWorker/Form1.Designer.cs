@@ -322,6 +322,7 @@ namespace UsbWorker
             this.tbDataOut.Size = new System.Drawing.Size(251, 23);
             this.tbDataOut.TabIndex = 4;
             this.tbDataOut.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbDataOut_KeyDown);
+            this.tbDataOut.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDataOut_KeyPress);
             // 
             // tbDataIn
             // 
