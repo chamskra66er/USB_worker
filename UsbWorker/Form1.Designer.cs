@@ -41,6 +41,7 @@ namespace UsbWorker
             this.cmbBaud = new System.Windows.Forms.ComboBox();
             this.cmbPort = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbTransmitteDataFormat = new System.Windows.Forms.ComboBox();
             this.cmbDataFormat = new System.Windows.Forms.ComboBox();
             this.cmbSaveAs = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -54,7 +55,6 @@ namespace UsbWorker
             this.tbDataOut = new System.Windows.Forms.TextBox();
             this.tbDataIn = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.cmbTransmitteDataFormat = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -200,6 +200,16 @@ namespace UsbWorker
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
+            // cmbTransmitteDataFormat
+            // 
+            this.cmbTransmitteDataFormat.FormattingEnabled = true;
+            this.cmbTransmitteDataFormat.Location = new System.Drawing.Point(221, 56);
+            this.cmbTransmitteDataFormat.Name = "cmbTransmitteDataFormat";
+            this.cmbTransmitteDataFormat.Size = new System.Drawing.Size(109, 23);
+            this.cmbTransmitteDataFormat.TabIndex = 13;
+            this.cmbTransmitteDataFormat.Text = "Trans Format";
+            this.cmbTransmitteDataFormat.SelectedIndexChanged += new System.EventHandler(this.cmbTransmitteDataFormat_SelectedIndexChanged);
+            // 
             // cmbDataFormat
             // 
             this.cmbDataFormat.FormattingEnabled = true;
@@ -208,6 +218,7 @@ namespace UsbWorker
             this.cmbDataFormat.Size = new System.Drawing.Size(109, 23);
             this.cmbDataFormat.TabIndex = 12;
             this.cmbDataFormat.Text = "Receive Format";
+            this.cmbDataFormat.SelectedIndexChanged += new System.EventHandler(this.cmbDataFormat_SelectedIndexChanged);
             // 
             // cmbSaveAs
             // 
@@ -332,15 +343,6 @@ namespace UsbWorker
             this.groupBox6.TabIndex = 7;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "MONITOR";
-            // 
-            // cmbTransmitteDataFormat
-            // 
-            this.cmbTransmitteDataFormat.FormattingEnabled = true;
-            this.cmbTransmitteDataFormat.Location = new System.Drawing.Point(221, 56);
-            this.cmbTransmitteDataFormat.Name = "cmbTransmitteDataFormat";
-            this.cmbTransmitteDataFormat.Size = new System.Drawing.Size(109, 23);
-            this.cmbTransmitteDataFormat.TabIndex = 13;
-            this.cmbTransmitteDataFormat.Text = "Trans Format";
             // 
             // Form1
             // 

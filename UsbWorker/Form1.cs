@@ -16,7 +16,8 @@ namespace UsbWorker
     {
         private SerialPort serialPort1;
         private List<string> dataFormat = new List<string>{"Hex","Decimal","Binary","Char"};
-        private string selectDataFormat = "Char";
+        private int selectedDataReceive = 3;
+        private int selectedDataTransmitte = 3;
         private int[] dataInDec;
 
         private string OutputData;
@@ -37,6 +38,7 @@ namespace UsbWorker
             btnClose.Enabled = false;
 
             cmbDataFormat.Items.AddRange(dataFormat.ToArray());
+            cmbTransmitteDataFormat.Items.AddRange(dataFormat.ToArray());
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -198,8 +200,8 @@ namespace UsbWorker
         {
             string outString = "";
             //"Hex","Decimal","Binary","Char"
-            var selectedData = cmbDataFormat.SelectedIndex;
-            switch (selectedData)
+            
+            switch (selectedDataReceive)
             {
                 case 0:
                     foreach (var item in dataIn)
@@ -229,6 +231,16 @@ namespace UsbWorker
                     break;
             }
             return outString;
+        }
+
+        private void cmbDataFormat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedDataReceive = cmbDataFormat.SelectedIndex;
+        }
+
+        private void cmbTransmitteDataFormat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedDataTransmitte = cmbTransmitteDataFormat.SelectedIndex;
         }
     }
 }
